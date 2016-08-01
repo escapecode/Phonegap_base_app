@@ -21,8 +21,8 @@ This code is to be used as a skeleton to create your own application.
 The folder structure is defined as follows:
 * www - folder that holds the PhoneGap mobile application code
 * server - PHP based server side code for
-** registering and sending Push notifications
-** handling geolocation lookups
+ * registering and sending Push notifications
+ * handling geolocation lookups
 * extra - a catch all folder for things that will be integrated into the previous two folders
 
 ## TODO
