@@ -12,6 +12,7 @@ Many mobile apps require the same, modular, reusable functionality.  To that end
 * file uploading
 * zipping files
 * push notifications
+* creation of a background service (which needs code clean up)
 
 This code is to be used as a skeleton to create your own application.
 
