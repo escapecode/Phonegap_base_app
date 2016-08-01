@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geolocation</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+    <script>
+		var map;
+
+		function initialize() {
+		  var mapOptions = {
+			zoom: 15,
+			mapTypeControl: true,
+			navigationControlOptions: {
+				style: google.maps.NavigationControlStyle.SMALL
+			},
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'),
+			  mapOptions);
+
+		  // Try HTML5 geolocation
+		  if(navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function(position) { // NOTE getCurrentPosition or watchPosition
+				var pos = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+				var infowindow = new google.maps.InfoWindow({
+					map: map,
+					position: pos,
+					content: 'HTML5 location margin=' + Math.round(position.coords.accuracy) + 'm altitude=' + Math.round(position.coords.altitude)
+				});
+
+				map.setCenter(pos);
+			}, function() {
+				handleNoGeolocation(true);
+			},
+			{
+				 timeout: 10000,
+				 enableHighAccuracy: true,
+				 maximumAge: 0
+			}
+			);
+		  } else {
+			// Browser doesn't support Geolocation
+			handleNoGeolocation(false);
+		  }
+		}
+
+		function handleNoGeolocation(errorFlag) {
+		  if (errorFlag) {
+			var content = 'Error: The Geolocation service failed';
+		  } else {
+			var content = 'Error: Your browser doesn\'t support geolocation.';
+		  }
+
+		  var options = {
+			map: map,
+			position: new google.maps.LatLng(60, 105),
+			content: content
+		  };
+
+		  var infowindow = new google.maps.InfoWindow(options);
+		  map.setCenter(options.position);
+		}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas" style='height: 50%;'></div>
+  </body>
+</html>
+

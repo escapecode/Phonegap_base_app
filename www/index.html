@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<meta name="msapplication-tap-highlight" content="no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+<!--
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+-->
+		<link rel="stylesheet" type="text/css" href="css/index.css" />
+		<title>Ken Push</title>
+
+	</head>
+	<body>
+		<div id="home" class="app">
+			<button onclick="window.location = 'http://dmsapp.net/herb-e/herbsmith/';" >Website</button>
+			<button onclick="window.location = 'http://dmsapp.net/storefinder/herbsmith/';">Store Finder</button>
+			<button onclick="window.location = 'http://img-oc.com/herbe/notify.html';">Alert</button>
+
+			<br />
+			<label>Compass</label>
+			<span id='compass'></span>
+			<span id='compass_error' class='red'></span>
+			<br />
+			<label>Active Store</label>
+			<span id='last_store'></span>
+			<br />
+			<button id='register' onclick='deviceRegister()'>Register</button>
+			<button id='unregister' onclick='deviceUnregister()'>Unregister</button><br />
+			<div id="app-status-div">
+				<ul id="app-status-ul">
+				</ul>
+			</div>
+		</div>
+
+		<!--
+		<button onclick="go();">Check distances</button>
+		<button id='start_map' onclick="startupLocation();">Start map</button>
+		-->
+		<br />
+		<label id='lbl_altitude'>altitude</label> <span id='altitude'></span>
+		<label id='lbl_altitudeAccuracy'>Accuracy</label> <span id='altitudeAccuracy'></span>m
+		<br />
+		<label id='lbl_latitude'>lat</label> <span id='latitude'></span>
+		<label id='lbl_logitude'>lng</label> <span id='longitude'></span>
+		<label id='lbl_accuracy'>accuracy</label> <span id='accuracy'></span>m
+		<br />
+		<label id='lbl_heading'>heading</label> <span id='heading'></span>
+		<label id='lbl_speed'>speed</label> <span id='speed'></span>
+		<br />
+		<label id='lbl_timestamp'>timestamp</label> <span id='timestamp'></span><br />
+
+		<div id="map-canvas" style='width: 600px; height: 500px;'></div>
+
+		<br />
+		<button id='qr_scan' onclick="qrScan();">QR scan</button>
+		<button id='qr_make' onclick="qrMake();">QR make</button>
+		<br />
+		<button id='take_picture' onclick="takePicture();">Take Picture</button>
+		<button id='file_upload' onclick="fileUpload();">Upload</button>
+		<button id='zip' onclick="zipSource();">Zip</button>
+		<br />
+		<progress' id='progressbar' />
+		<br />
+		<img id='my_photo' />
+		<br />
+
+		 <script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+		 <script type="text/javascript" charset="utf-8" src="js/lib/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/lib/PushNotification.js"></script>
+		<script type="text/javascript" charset="utf-8" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+
+		<script type="text/javascript" charset="utf-8" src="js/core.js"></script>
+
+		<script type="text/javascript" charset="utf-8" src="js/app_push.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/config.js"></script>
+		<script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+	</body>
+</html>
